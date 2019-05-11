@@ -22,7 +22,9 @@ app.use(express.json())
 //validate API
 app.use(function validateBearerToken(req, res, next) {
   const apiToken = process.env.API_TOKEN
+  console.log('apiToken', apiToken);
   const authToken = req.get('Authorization')
+  console.log('authToken', authToken);
 
   if (!authToken || authToken.split(' ')[1] !== apiToken) {
     logger.error(`Unauthorized request to path: ${req.path}`);
