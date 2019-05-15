@@ -56,3 +56,12 @@
 {"message":"Bookmark with id 5003 not found.","level":"error"}
 {"message":"Unauthorized request to path: /","level":"error"}
 {"message":"Unauthorized request to path: /favicon.ico","level":"error"}
+{"message":"Bookmark with id 5003 not found.","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
