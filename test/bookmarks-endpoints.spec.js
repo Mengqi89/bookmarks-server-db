@@ -1,7 +1,8 @@
 const knex = require("knex");
 const app = require("../src/app");
+const { makeBookmarksArray, makeMaliciousBookmark } = require('./bookmarks.fixtures')
 
-describe("Bookmarks Endpoints", function() {
+describe("Bookmarks Endpoints", function () {
   let db;
 
   before("make knex instance", () => {
@@ -44,47 +45,24 @@ describe("Bookmarks Endpoints", function() {
       });
     });
     context("Given there are bookmarks", () => {
-      const testBookmarks = [
-        {
-          id: 1,
-          title: "facebook",
-          url: "https://www.facebook.com",
-          description: "time waster",
-          rating: 1
-        },
-        {
-          id: 2,
-          title: "google",
-          url: "https://www.google.com",
-          description: null,
-          rating: 5
-        },
-        {
-          id: 3,
-          title: "twitter",
-          url: "https://www.twitter.com",
-          description: "idk what it iz",
-          rating: 3
-        }
-      ];
       beforeEach("insert bookmarks", () => {
-        return db.into("bookmarks").insert(testBookmarks);
+        return db.into("bookmarks").insert(makeBookmarksArray());
       });
       it("GET /bookmarks responds with 200 and all the bookmarks", () => {
         return supertest(app)
           .get("/bookmarks")
           .set("Authorization", `Bearer ${process.env.API_TOKEN}`)
-          .expect(200, testBookmarks);
+          .expect(200, makeBookmarksArray());
       });
     });
   });
   describe.only("POST /bookmarks", () => {
-    it("creates a bookmark, responding with 201 and the new bookmark", function() {
+    it("creates a bookmark, responding with 201 and the new bookmark", function () {
       const newBookmark = {
         title: "new title",
         url: "https://www.newtitle.com",
         description: "new description",
-        rating: 5
+        rating: 3
       };
       return supertest(app)
         .post("/bookmarks")
@@ -95,7 +73,8 @@ describe("Bookmarks Endpoints", function() {
           expect(res.body.title).to.eql(newBookmark.title);
           expect(res.body.url).to.eql(newBookmark.url);
           expect(res.body.description).to.eql(newBookmark.description);
-          expect(res.body.rating).to.eql(newBookmark.rating);
+          expect(res.body.rating).to.eql(newBookmark.rating); //rating does not come back
+          console.log(res.body)
           expect(res.body).to.have.property("id");
           expect(res.headers.location).to.eql(`/bookmarks/${res.body.id}`);
         })
@@ -123,9 +102,22 @@ describe("Bookmarks Endpoints", function() {
           .set("Authorization", `Bearer ${process.env.API_TOKEN}`)
           .send(newBookmark)
           .expect(400, {
-            error: { message: `missing '${field}' in request body` }
+            error: { message: `Missing '${field}' in request body` }
           });
       });
     });
+
+    it('removes XSS attack content from response', () => {
+      const { maliciousBookmark, expectedBookmark } = makeMaliciousBookmark()
+      return supertest(app)
+        .post('/bookmarks')
+        .set("Authorization", `Bearer ${process.env.API_TOKEN}`)
+        .send(maliciousBookmark)
+        .expect(201)
+        .expect(res => {
+          expect(res.body.title).to.eql(expectedBookmark.title)
+          expect(res.body.description).to.eql(expectedBookmark.description)
+        })
+    })
   });
 });
