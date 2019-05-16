@@ -65,3 +65,66 @@
 {"message":"Unauthorized request to path: /bookmarks","level":"error"}
 {"message":"Unauthorized request to path: /bookmarks","level":"error"}
 {"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Description is required","level":"error"}
+{"message":"Missing title in request body","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Missing title in request body","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Unauthorized request to path: /bookmarks/","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}

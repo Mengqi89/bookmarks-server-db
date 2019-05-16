@@ -1,11 +1,21 @@
 const express = require("express");
-const uuid = require("uuid/v4");
+const xss = require('xss');
 const logger = require("../logger");
 const { bookmarks } = require("../store");
 const BookmarksService = require("./bookmarks-service");
 
 const bookmarkRouter = express.Router();
 const bodyParser = express.json();
+
+const serializeBookmark = bookmark => (
+  {
+    id: bookmark.id,
+    title: xss(bookmark.title),
+    description: xss(bookmark.description),
+    url: bookmark.url,
+    rating: bookmark.rating
+  }
+)
 
 bookmarkRouter.route("/").get((req, res) => {
   res.send("Hello, boilerplate!");
@@ -16,7 +26,9 @@ bookmarkRouter
   .get((req, res, next) => {
     const knexInstance = req.app.get("db");
     BookmarksService.getAllBookmarks(knexInstance)
-      .then(bookmarks => res.json(bookmarks))
+      .then(bookmarks => {
+        res.json(bookmarks.map(serializeBookmark))
+      })
       .catch(next);
   })
   .post(bodyParser, (req, res, next) => {
@@ -25,23 +37,23 @@ bookmarkRouter
     const newBookmark = { title, url, description, rating };
 
     if (!title) {
-      logger.error(`Title is required`);
-      return res.status(400).send("Invalid data 1");
+      logger.error('Title is required');
+      return res.status(400).json({ error: { message: "Missing 'title' in request body" } });
     }
 
     if (!url) {
       logger.error(`Url is required`);
-      return res.status(400).send("Invalid data 2");
+      return res.status(400).json({ error: { message: "Missing 'url' in request body" } });
     }
 
-    if (!description) {
-      logger.error(`Description is required`);
-      return res.status(400).send("Invalid data 3");
-    }
+    // if (!description) {
+    //   logger.error(`Description is required`);
+    //   return res.status(400).send('Missing title in request body');
+    // }
 
     if (!rating) {
       logger.error(`Rating is required`);
-      return res.status(400).send("Invalid data 4");
+      return res.status(400).json({ error: { message: "Missing 'rating' in request body" } });
     }
 
     BookmarksService.insertBookmark(req.app.get("db"), newBookmark)
@@ -49,7 +61,7 @@ bookmarkRouter
         res
           .status(201)
           .location(`/bookmarks/${bookmark.id}`)
-          .json(bookmark);
+          .json(serializeBookmark(bookmark));
       })
 
       .catch(next);
@@ -71,7 +83,7 @@ bookmarkRouter
             .status(404)
             .json({ error: { message: "Bookmark Not Found" } });
         }
-        res.json(bookmark);
+        res.json(serializeBookmark(bookmark));
       })
       .catch(next);
   })
