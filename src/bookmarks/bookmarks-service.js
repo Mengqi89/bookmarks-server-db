@@ -13,10 +13,15 @@ const BookmarksService = {
     return knex
       .insert(bookmark)
       .into("bookmarks")
-      .returning("*")
+      .returning("*")//why do you need to return?
       .then(rows => {
         return rows[0];
-      });
+      })
+  },
+  updateBookmark(knex, id, newBookmarkFields) {
+    return knex('bookmarks')
+      .where({ id })
+      .update(newBookmarkFields)
   }
 };
 

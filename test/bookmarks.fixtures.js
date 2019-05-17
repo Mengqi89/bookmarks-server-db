@@ -2,23 +2,23 @@ function makeBookmarksArray() {
     return [
         {
             id: 1,
-            title: "facebook",
-            url: "https://www.facebook.com",
-            description: "time waster",
+            title: 'facebook',
+            url: 'https://www.facebook.com',
+            description: 'time waster',
             rating: 1
         },
         {
             id: 2,
-            title: "google",
-            url: "https://www.google.com",
-            description: null,
+            title: 'google',
+            url: 'https://www.google.com',
+            description: '',
             rating: 5
         },
         {
             id: 3,
-            title: "twitter",
-            url: "https://www.twitter.com",
-            description: "idk what it iz",
+            title: 'twitter',
+            url: 'https://www.twitter.com',
+            description: 'idk what it iz',
             rating: 3
         }
     ]
