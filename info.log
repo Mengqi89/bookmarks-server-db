@@ -182,3 +182,30 @@
 {"message":"Unauthorized request to path: /api/bookmarks/3","level":"error"}
 {"message":"Unauthorized request to path: /api/bookmarks/3","level":"error"}
 {"message":"Unauthorized request to path: /api/bookmarks/3","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Unauthorized request to path: /api/bookmarks/3","level":"error"}
+{"message":"Unauthorized request to path: /api/bookmarks/2","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Unauthorized request to path: /api/bookmarks/3","level":"error"}
+{"message":"Unauthorized request to path: /api/bookmarks/2","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Unauthorized request to path: /api/bookmarks/undefined","level":"error"}
+{"message":"Unauthorized request to path: /api/bookmarks/undefined","level":"error"}
+{"message":"Unauthorized request to path: /api/bookmarks","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
+{"message":"Unauthorized request to path: /api/bookmarks/3","level":"error"}
+{"message":"Unauthorized request to path: /api/bookmarks/2","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Rating is required","level":"error"}
