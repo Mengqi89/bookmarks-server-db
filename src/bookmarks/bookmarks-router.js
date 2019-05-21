@@ -79,23 +79,19 @@ bookmarkRouter
   .get((req, res, next) => {
     res.json(serializeBookmark(res.bookmark));
   })
-  .delete((req, res) => {
-    const bookmarkIndex = bookmarks.findIndex(b => b.id == id);
-
-    if (bookmarkIndex === -1) {
-      logger.error(`Bookmark with id ${bookmarkId} not found.`);
-      return res.status(404).send("Not found");
-    }
-
-    bookmarks.splice(bookmarkIndex, 1);
-
-    logger.info(`Bookmark with id ${bookmarkId} deleted.`);
-    res.status(204).end();
+  .delete((req, res, next) => {
+    BookmarksService.deleteBookmark(
+      req.app.get('db'),
+      req.params.bookmarkId
+    )
+      .then(() => {
+        res.status(204).end()
+      })
+      .catch(next)
   })
   .patch(bodyParser, (req, res, next) => {
     const { title, url, description, rating } = req.body;
     const bookmarkToUpdate = { title, url, description, rating };
-    console.log(bookmarkToUpdate);
     const numberOfValues = Object.values(bookmarkToUpdate).filter(Boolean)
       .length;
     if (numberOfValues === 0) {
